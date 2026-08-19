@@ -9,7 +9,7 @@ vim.opt.mouse = 'a'
 vim.opt.termguicolors = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-
+vim.opt.statuscolumn = "%s %{v:lnum} %{v:relnum}"
 -- Exit terminal
 vim.keymap.set('t', '<leader>ff', [[<C-\><C-n>]], { desc = 'Exit terminal mode with jj', nowait = true })
 
@@ -74,6 +74,8 @@ vim.pack.add({
     'https://github.com/olrtg/emmet-language-server',
     'https://github.com/rafamadriz/friendly-snippets',
     { src = 'https://github.com/nvim-mini/mini.pairs', version = 'stable' },
+    'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+    'https://github.com/nvim-tree/nvim-web-devicons',
 })
 
 
@@ -120,29 +122,6 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
-
--- Configuration for files not in a git repository
--- Temporary fix when i forgot to include the lsp configuration package
---[[
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'python',
-    callback = function(args)
-        -- Start Ty (Type Checker)
-        vim.lsp.start({
-            name = 'ty',
-            cmd = { 'ty', 'server' },
-            root_dir = vim.fs.root(args.buf, { 'pyproject.toml', 'setup.py', '.git' }) or vim.fn.expand('%:p:h'),
-        })
-
-        -- Start Ruff (Linter & Errors)
-        vim.lsp.start({
-            name = 'ruff',
-            cmd = { 'ruff', 'server' }, -- Forces Neovim to use the system ruff binary directly
-            root_dir = vim.fs.root(args.buf, { 'pyproject.toml', 'setup.py', '.git' }) or vim.fn.expand('%:p:h'),
-        })
-    end,
-})
-]]
 
 
 vim.o.signcolumn = 'yes'
@@ -232,3 +211,9 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- mini pairs
 -- adds auto creation of parenthesys and space on enter
 require('mini.pairs').setup({})
+
+-- for markdown inside neovim
+-- note that it requires a "nerd font" in the terminal to work properly
+-- and either 'https://github.com/nvim-mini/mini.icons' or 'https://github.com/nvim-tree/nvim-web-devicons'.
+-- for icons
+require('render-markdown').setup({})
