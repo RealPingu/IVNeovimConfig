@@ -1,6 +1,6 @@
 -- 1. Tecla lider
 vim.g.mapleader = ' '
-vim.g.localleader = ' '
+vim.g.maplocalleader = ' '
 
 -- 2. Interfaz basica
 vim.opt.number = true
@@ -89,6 +89,7 @@ vim.pack.add({
     'https://github.com/MeanderingProgrammer/render-markdown.nvim',
     'https://github.com/nvim-tree/nvim-web-devicons',
     { src = 'https://github.com/iamcco/markdown-preview.nvim', build = 'cd app && ./install.sh' },
+    -- 'https://github.com/lervag/vimtex', -- See ./Latex-WSL for full setup
 })
 
 
@@ -134,6 +135,7 @@ vim.lsp.enable({
     'tailwindcss',
     'clangd',
     'marksman',
+    -- 'texlab', -- LaTeX LSP (See ./Latex-WSL)
 })
 
 -- NATIVE 0.12 CLIENT ATTACHMENT FOR EMMET
@@ -257,5 +259,7 @@ require('mini.pairs').setup({})
 -- for markdown inside neovim
 require('render-markdown').setup({})
 
--- for markdown in browser (mostly to see images)
---require('markdown-preview').setup({})
+-- VimTeX (See ./Latex-WSL for full WSL2 setup guide)
+-- vim.g.vimtex_view_method = 'zathura_simple'
+-- vim.g.vimtex_compiler_method = 'latexmk'
+-- vim.g.vimtex_view_zathura_options = '--mode fullscreen'

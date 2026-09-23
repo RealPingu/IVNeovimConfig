@@ -189,7 +189,14 @@ Install a [Nerd Font](https://www.nerdfonts.com/) (e.g., **JetBrains Mono Nerd F
 
 ## 🎨 Wallpaper Engine Transparency Companion
 
-If you use **Wallpaper Engine** and want your live animated wallpaper to display cleanly behind your transparent terminal without other open windows getting in the way, check out the companion tool in [`wpe-minimize-win/`](./wpe-minimize-win):
+If you use **Wallpaper Engine** and want your live animated wallpaper to display cleanly behind your transparent terminal without other open windows getting in the way, check out the companion tool in [`WallPaperEngineTerminal/`](./WallPaperEngineTerminal):
 - **Windows (AutoHotkey v2)**: Automatically minimizes background windows on the same monitor whenever Windows Terminal is focused.
 - **Linux (Experimental)**: Equivalent background script for Linux/X11 window managers.
+
+---
+
+## 📄 LaTeX & VimTeX in WSL2
+
+If you write LaTeX and want continuous compilation (`latexmk`), full SyncTeX Forward & Inverse search (`Ctrl + Click`), and PDF viewing via **Zathura** in WSL2/WSLg, check out the dedicated setup guide and automated cursor scripts in [`Latex-WSL/`](./Latex-WSL).
+
 

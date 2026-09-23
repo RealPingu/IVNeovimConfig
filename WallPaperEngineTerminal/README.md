@@ -92,4 +92,3 @@ cd ~/.config/nvim/wpe-minimize-win
 **TODO**
 - Test script with native Linux distros.
 - Test different Linux terminals that allows transparency.
--
