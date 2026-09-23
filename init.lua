@@ -79,7 +79,7 @@ vim.pack.add({
     'https://github.com/neovim/nvim-lspconfig',
     'https://github.com/karb94/neoscroll.nvim',
     'https://github.com/scottmckendry/cyberdream.nvim',
-    { src = 'https://github.com/saghen/blink.cmp',     version = vim.version.range('1.x'), build = 'cargo build --realese' },
+    { src = 'https://github.com/saghen/blink.cmp',     version = vim.version.range('1.x'), build = 'cargo build --release' },
     'https://github.com/esmuellert/codediff.nvim',
     'https://github.com/kdheepak/lazygit.nvim',
     'https://github.com/stevearc/oil.nvim',
@@ -88,7 +88,7 @@ vim.pack.add({
     { src = 'https://github.com/nvim-mini/mini.pairs', version = 'stable' },
     'https://github.com/MeanderingProgrammer/render-markdown.nvim',
     'https://github.com/nvim-tree/nvim-web-devicons',
-    'https://github.com/iamcco/markdown-preview.nvim',
+    { src = 'https://github.com/iamcco/markdown-preview.nvim', build = 'cd app && ./install.sh' },
 })
 
 
@@ -211,7 +211,23 @@ require('blink.cmp').setup({
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Mostrar documentacion" })
 
 -- LazyGit
-vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = 'Lazygit' })
+vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = 'Lazygit (launched CWD)' })
+vim.keymap.set('n', '<leader>gf', function()
+    local dir
+    if vim.bo.filetype == 'oil' then
+        dir = require('oil').get_current_dir()
+    elseif vim.bo.buftype == 'terminal' then
+        dir = vim.fn.getcwd()
+    else
+        dir = vim.fn.expand('%:p:h')
+    end
+
+    if dir and dir ~= '' then
+        require('lazygit').lazygit(dir)
+    else
+        require('lazygit').lazygit()
+    end
+end, { desc = 'Lazygit (current file or oil directory)' })
 
 -- Codediff
 require("codediff").setup({})
