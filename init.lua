@@ -10,8 +10,21 @@ vim.opt.termguicolors = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.statuscolumn = "%s %{v:lnum} %{v:relnum}"
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us' }
+
 -- Exit terminal
-vim.keymap.set('t', '<leader>ff', [[<C-\><C-n>]], { desc = 'Exit terminal mode with jj', nowait = true })
+vim.keymap.set('t', '<leader>ff', [[<C-\><C-n>]], { desc = 'Exit terminal mode with space + f + f', nowait = true })
+vim.api.nvim_create_autocmd('TermOpen', {
+    group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+    callback = function()
+        vim.opt_local.number = false         -- Hide absolute line numbers
+        vim.opt_local.relativenumber = false -- Hide relative line numbers
+        vim.opt_local.statuscolumn = ""      -- Clear your custom
+        vim.opt_local.signcolumn = "no"      -- Hide sign column
+        vim.opt_local.spell = false          -- Disable spellcheck in the
+    end,
+})
 
 -- 3. Indentacion
 vim.opt.tabstop = 4
@@ -70,12 +83,12 @@ vim.pack.add({
     'https://github.com/esmuellert/codediff.nvim',
     'https://github.com/kdheepak/lazygit.nvim',
     'https://github.com/stevearc/oil.nvim',
-    'https://github.com/jonroosevelt/gemini-cli.nvim',
     'https://github.com/olrtg/emmet-language-server',
     'https://github.com/rafamadriz/friendly-snippets',
     { src = 'https://github.com/nvim-mini/mini.pairs', version = 'stable' },
     'https://github.com/MeanderingProgrammer/render-markdown.nvim',
     'https://github.com/nvim-tree/nvim-web-devicons',
+    'https://github.com/iamcco/markdown-preview.nvim',
 })
 
 
@@ -90,8 +103,20 @@ require("fzf-lua").setup({
     }
 })
 
+
 vim.keymap.set('n', '<leader><leader>', '<cmd>FzfLua files<cr>', { desc = 'Find files' })
 vim.keymap.set('n', '<leader>/', '<cmd>FzfLua live_grep<cr>', { desc = 'Find live grep' })
+vim.keymap.set('n', '<leader>b', '<cmd>FzfLua buffers<cr>', { desc = 'Fuzzy find buffers' })
+-- fuzzy find current buffer directory
+vim.keymap.set('n', '<leader>fb', function()
+    require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })
+end, { desc = 'Find files in current buffer directory' })
+
+-- fuzzy find from home
+vim.keymap.set('n', '<leader>fh', function()
+    require('fzf-lua').files({ cwd = vim.fn.expand('~') })
+end, { desc = 'Find files in home (~)' })
+
 
 -- Tree-sitter
 -- Usando el comando :TSInstall "nombre-del-parser"
@@ -108,6 +133,7 @@ vim.lsp.enable({
     'ts_ls',
     'tailwindcss',
     'clangd',
+    'marksman',
 })
 
 -- NATIVE 0.12 CLIENT ATTACHMENT FOR EMMET
@@ -213,7 +239,7 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 require('mini.pairs').setup({})
 
 -- for markdown inside neovim
--- note that it requires a "nerd font" in the terminal to work properly
--- and either 'https://github.com/nvim-mini/mini.icons' or 'https://github.com/nvim-tree/nvim-web-devicons'.
--- for icons
 require('render-markdown').setup({})
+
+-- for markdown in browser (mostly to see images)
+--require('markdown-preview').setup({})
