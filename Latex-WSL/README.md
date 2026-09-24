@@ -88,6 +88,18 @@ Inside Neovim, run:
 
 ---
 
+## 🧩 Custom Callout Box Snippets
+
+Preconfigured in [`Latex-WSL/snippets/tex.json`](./snippets/tex.json) for `tcolorbox` notes:
+
+| Trigger Prefix | Expanded LaTeX Block | Description |
+| :--- | :--- | :--- |
+| **`defbox`** or `definitionbox` | `\begin{definitionbox}{Title} ... \end{definitionbox}` | Blue callout box for definitions & key concepts |
+| **`warnbox`** or `warningbox` | `\begin{warningbox}{Title} ... \end{warningbox}` | Orange/Red callout box for warnings & critical notes |
+| **`exbox`** or `examplebox` | `\begin{examplebox}{Title} ... \end{examplebox}` | Green callout box for examples & tips |
+
+---
+
 ### Zathura PDF Viewer Navigation
 | Key | Action |
 | :--- | :--- |

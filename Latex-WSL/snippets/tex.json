@@ -1,0 +1,29 @@
+{
+  "Definition Box": {
+    "prefix": ["defbox", "definitionbox"],
+    "body": [
+      "\\begin{definitionbox}{${1:Title}}",
+      "\t${0}",
+      "\\end{definitionbox}"
+    ],
+    "description": "Custom tcolorbox definition box"
+  },
+  "Warning Box": {
+    "prefix": ["warnbox", "warningbox"],
+    "body": [
+      "\\begin{warningbox}{${1:Title}}",
+      "\t${0}",
+      "\\end{warningbox}"
+    ],
+    "description": "Custom tcolorbox warning box"
+  },
+  "Example Box": {
+    "prefix": ["exbox", "examplebox"],
+    "body": [
+      "\\begin{examplebox}{${1:Title}}",
+      "\t${0}",
+      "\\end{examplebox}"
+    ],
+    "description": "Custom tcolorbox example box"
+  }
+}

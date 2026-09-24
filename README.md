@@ -139,6 +139,8 @@ Install a [Nerd Font](https://www.nerdfonts.com/) (e.g., **JetBrains Mono Nerd F
 | `<leader>sn` | Normal | Open empty vertical split (`:vnew`) |
 | `<leader>vn` | Normal | Open empty horizontal split (`:new`) |
 | `-` | Normal | Open [Oil.nvim](https://github.com/stevearc/oil.nvim) parent directory file browser |
+| `<leader>o` | Oil Buffer | Toggle hidden files in Oil |
+| `<leader>p` | Oil Buffer | Refresh directory listing in Oil |
 
 ### Fuzzy Search ([fzf-lua](https://github.com/ibhagwan/fzf-lua))
 | Keybinding | Mode | Action |

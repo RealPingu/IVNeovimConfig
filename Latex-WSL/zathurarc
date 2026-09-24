@@ -1,6 +1,6 @@
 # Zathura Configuration for WSL2 / WSLg
-set window-width 1400
-set window-height 1000
+set window-width 1200
+set window-height 900
 set adjust-open "width"
 set render-loading "false"
 set scroll-step 50

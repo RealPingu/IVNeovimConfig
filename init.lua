@@ -89,7 +89,7 @@ vim.pack.add({
     'https://github.com/MeanderingProgrammer/render-markdown.nvim',
     'https://github.com/nvim-tree/nvim-web-devicons',
     { src = 'https://github.com/iamcco/markdown-preview.nvim', build = 'cd app && ./install.sh' },
-    -- 'https://github.com/lervag/vimtex', -- See ./Latex-WSL for full setup
+    'https://github.com/lervag/vimtex',
 })
 
 
@@ -135,7 +135,7 @@ vim.lsp.enable({
     'tailwindcss',
     'clangd',
     'marksman',
-    -- 'texlab', -- LaTeX LSP (See ./Latex-WSL)
+    'texlab',
 })
 
 -- NATIVE 0.12 CLIENT ATTACHMENT FOR EMMET
@@ -203,7 +203,16 @@ require('blink.cmp').setup({
         }
     },
     sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' }
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+            snippets = {
+                opts = {
+                    search_paths = {
+                        vim.fn.stdpath('config') .. '/Latex-WSL/snippets',
+                    },
+                },
+            },
+        },
     },
     keymap = {
         preset = 'default',
@@ -247,7 +256,15 @@ vim.cmd("colorscheme cyberdream")
 require("oil").setup({
     view_options = {
         show_hidden = true,
-    }
+    },
+    keymaps = {
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
+        ["<C-j>"] = false,
+        ["<C-k>"] = false,
+        ["<leader>o"] = { "actions.toggle_hidden", desc = "Toggle hidden files" },
+        ["<leader>p"] = { "actions.refresh", desc = "Refresh directory" },
+    },
 })
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
@@ -259,7 +276,12 @@ require('mini.pairs').setup({})
 -- for markdown inside neovim
 require('render-markdown').setup({})
 
--- VimTeX (See ./Latex-WSL for full WSL2 setup guide)
--- vim.g.vimtex_view_method = 'zathura_simple'
--- vim.g.vimtex_compiler_method = 'latexmk'
--- vim.g.vimtex_view_zathura_options = '--mode fullscreen'
+-- VimTeX (Wayland / WSLg native - See ./Latex-WSL for details)
+vim.g.vimtex_view_method = 'zathura_simple'
+vim.g.vimtex_compiler_method = 'latexmk'
+vim.g.vimtex_view_zathura_options = ''
+vim.g.vimtex_view_automatic = 0
+vim.g.vimtex_compiler_latexmk = {
+    aux_dir = 'build',
+    out_dir = 'pdfs',
+}
