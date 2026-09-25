@@ -66,6 +66,16 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>sn', '<cmd>vnew<cr>', { desc = 'Split vertical vacío' })
 vim.keymap.set('n', '<leader>vn', '<cmd>new<cr>', { desc = 'Split horizontal vacío' })
 
+-- Cerrar buffer sin cerrar la ventana
+vim.keymap.set('n', '<leader>mm', function()
+    local cur = vim.api.nvim_get_current_buf()
+    vim.cmd('bprevious')
+    if vim.api.nvim_get_current_buf() == cur then
+        vim.cmd('enew')
+    end
+    vim.cmd('bdelete! ' .. cur)
+end, { desc = 'Close buffer (preserve window layout)' })
+
 -- Destacar yanks
 vim.api.nvim_create_autocmd('TextYankPost', {
     group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),

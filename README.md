@@ -138,6 +138,7 @@ Install a [Nerd Font](https://www.nerdfonts.com/) (e.g., **JetBrains Mono Nerd F
 | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Normal | Move focus between split windows |
 | `<leader>sn` | Normal | Open empty vertical split (`:vnew`) |
 | `<leader>vn` | Normal | Open empty horizontal split (`:new`) |
+| `<leader>mm` | Normal | Close current buffer while preserving window split layout |
 | `-` | Normal | Open [Oil.nvim](https://github.com/stevearc/oil.nvim) parent directory file browser |
 | `<leader>o` | Oil Buffer | Toggle hidden files in Oil |
 | `<leader>p` | Oil Buffer | Refresh directory listing in Oil |
