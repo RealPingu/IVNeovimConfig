@@ -9,11 +9,13 @@ It uses native Neovim features (native `vim.pack.add` package management, native
 ## ✨ Features
 
 - **Package Management**: Native `vim.pack.add` with reproducible lockfile (`nvim-pack-lock.json`).
-- **Aesthetic**: [cyberdream.nvim](https://github.com/scottmckendry/cyberdream.nvim) theme with transparent background support.
+- **Dashboard**: [alpha-nvim](https://github.com/goolord/alpha-nvim) with custom Cyberdream-themed penguin ASCII art, side-by-side quick actions, recent folders, and recent files.
+- **Aesthetic & Cursor**: [cyberdream.nvim](https://github.com/scottmckendry/cyberdream.nvim) theme with transparent background support and [smear-cursor.nvim](https://github.com/sphamba/smear-cursor.nvim) for smooth animated cursor trail.
 - **Completion**: [blink.cmp](https://github.com/saghen/blink.cmp) + [friendly-snippets](https://github.com/rafamadriz/friendly-snippets).
 - **Fuzzy Finder**: [fzf-lua](https://github.com/ibhagwan/fzf-lua) for high-performance file searching and live project grepping.
 - **File Explorer**: [oil.nvim](https://github.com/stevearc/oil.nvim) for editing filesystem buffers like text.
 - **LSP & Formatting**: Native `vim.lsp` with auto-format on save and dynamic [Emmet](https://github.com/olrtg/emmet-language-server) attachment for HTML/JSX/CSS.
+- **LaTeX & Document Editing**: [vimtex](https://github.com/lervag/vimtex) with background continuous compilation (`latexmk`) and PDF integration.
 - **Git**: [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) (with smart CWD & Oil buffer repository resolution) and [codediff.nvim](https://github.com/esmuellert/codediff.nvim).
 - **WSL2 Clipboard**: Synchronized shared clipboard between Windows and WSL2 via `xclip`.
 
@@ -134,7 +136,7 @@ Install a [Nerd Font](https://www.nerdfonts.com/) (e.g., **JetBrains Mono Nerd F
 | :--- | :---: | :--- |
 | `<Space>` | Normal | **Leader key** |
 | `jj` | Insert | Fast escape to Normal mode |
-| `<leader>ff` | Terminal | Exit terminal mode (`<C-\><C-n>`) |
+| `<leader>f` | Terminal | Exit terminal mode (`<C-\><C-n>`) |
 | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Normal | Move focus between split windows |
 | `<leader>sn` | Normal | Open empty vertical split (`:vnew`) |
 | `<leader>vn` | Normal | Open empty horizontal split (`:new`) |
@@ -187,6 +189,9 @@ Install a [Nerd Font](https://www.nerdfonts.com/) (e.g., **JetBrains Mono Nerd F
 | [`MeanderingProgrammer/render-markdown.nvim`](https://github.com/MeanderingProgrammer/render-markdown.nvim) | In-buffer Markdown Rendering | Treesitter `markdown` & `markdown_inline` parsers + Nerd Font |
 | [`nvim-tree/nvim-web-devicons`](https://github.com/nvim-tree/nvim-web-devicons) | File Type Icons | Nerd Font in terminal |
 | [`iamcco/markdown-preview.nvim`](https://github.com/iamcco/markdown-preview.nvim) | Browser Markdown Preview | Node.js + `cd app && ./install.sh` + `wslu` (`wslview`) |
+| [`goolord/alpha-nvim`](https://github.com/goolord/alpha-nvim) | Fast Startup Dashboard | Pure Lua (configured in `lua/alpha-config.lua`) |
+| [`sphamba/smear-cursor.nvim`](https://github.com/sphamba/smear-cursor.nvim) | Animated Trailing Cursor | Terminal supporting RGB / TrueColor |
+| [`lervag/vimtex`](https://github.com/lervag/vimtex) | LaTeX Editing & Compilation | `latexmk`, `texlive`, PDF viewer (`zathura`) |
 
 ---
 

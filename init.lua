@@ -14,7 +14,7 @@ vim.opt.spell = true
 vim.opt.spelllang = { 'en_us' }
 
 -- Exit terminal
-vim.keymap.set('t', '<leader>ff', [[<C-\><C-n>]], { desc = 'Exit terminal mode with space + f + f', nowait = true })
+vim.keymap.set('t', '<leader>f', [[<C-\><C-n>]], { desc = 'Exit terminal mode with space + f', nowait = true })
 vim.api.nvim_create_autocmd('TermOpen', {
     group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
     callback = function()
@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
         vim.opt_local.relativenumber = false -- Hide relative line numbers
         vim.opt_local.statuscolumn = ""      -- Clear your custom
         vim.opt_local.signcolumn = "no"      -- Hide sign column
-        vim.opt_local.spell = false          -- Disable spellcheck in the
+        vim.opt_local.spell = false          -- Disable spellcheck in the terminal
     end,
 })
 
@@ -100,6 +100,8 @@ vim.pack.add({
     'https://github.com/nvim-tree/nvim-web-devicons',
     { src = 'https://github.com/iamcco/markdown-preview.nvim', build = 'cd app && ./install.sh' },
     'https://github.com/lervag/vimtex',
+    'https://github.com/sphamba/smear-cursor.nvim',
+    'https://github.com/goolord/alpha-nvim',
 })
 
 
@@ -118,6 +120,7 @@ require("fzf-lua").setup({
 vim.keymap.set('n', '<leader><leader>', '<cmd>FzfLua files<cr>', { desc = 'Find files' })
 vim.keymap.set('n', '<leader>/', '<cmd>FzfLua live_grep<cr>', { desc = 'Find live grep' })
 vim.keymap.set('n', '<leader>b', '<cmd>FzfLua buffers<cr>', { desc = 'Fuzzy find buffers' })
+
 -- fuzzy find current buffer directory
 vim.keymap.set('n', '<leader>fb', function()
     require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })
@@ -193,6 +196,7 @@ require('neoscroll').setup({
     easing = 'quadratic',
     duration_multiplier = 0.30,
 })
+
 
 -- Blink.cmp
 require('blink.cmp').setup({
@@ -281,7 +285,7 @@ require("oil").setup({
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- mini pairs
--- adds auto creation of parenthesys and space on enter
+-- adds auto creation of parentheses and space on enter
 require('mini.pairs').setup({})
 
 -- for markdown inside neovim
@@ -296,3 +300,9 @@ vim.g.vimtex_compiler_latexmk = {
     aux_dir = 'build',
     out_dir = 'pdfs',
 }
+
+-- Animated cursor
+require('smear_cursor').setup({})
+
+-- Alpha Dashboard (configured in lua/alpha-config.lua)
+require('alpha-config')
