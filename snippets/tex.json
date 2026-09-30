@@ -25,5 +25,12 @@
       "\\end{examplebox}"
     ],
     "description": "Custom tcolorbox example box"
+  },
+  "Textbf": {
+      "prefix": ["tbf"],
+      "body": [
+          "\\textbf{${1:text}}"
+      ],
+      "description": "fast textbf command"
   }
 }

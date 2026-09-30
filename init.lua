@@ -131,6 +131,7 @@ end, { desc = 'Find files in home (~)' })
 
 -- Tree-sitter
 -- Usando el comando :TSInstall "nombre-del-parser"
+require('nvim-treesitter').setup()
 vim.cmd('syntax off')
 vim.api.nvim_create_autocmd('FileType', {
     callback = function() pcall(vim.treesitter.start) end,
