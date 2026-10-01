@@ -12,7 +12,7 @@ It uses native Neovim features (native `vim.pack.add` package management, native
 - **Dashboard**: [alpha-nvim](https://github.com/goolord/alpha-nvim) with custom Cyberdream-themed penguin ASCII art, side-by-side quick actions, recent folders, and recent files.
 - **Aesthetic & Cursor**: [cyberdream.nvim](https://github.com/scottmckendry/cyberdream.nvim) theme with transparent background support and [smear-cursor.nvim](https://github.com/sphamba/smear-cursor.nvim) for smooth animated cursor trail.
 - **Completion**: [blink.cmp](https://github.com/saghen/blink.cmp) + [friendly-snippets](https://github.com/rafamadriz/friendly-snippets).
-- **Fuzzy Finder**: [fzf-lua](https://github.com/ibhagwan/fzf-lua) for high-performance file searching and live project grepping.
+- **Fuzzy Finder & Navigation**: [fzf-lua](https://github.com/ibhagwan/fzf-lua) for high-performance searching and [flash.nvim](https://github.com/folke/flash.nvim) for fast 2D code navigation and Treesitter selection.
 - **File Explorer**: [oil.nvim](https://github.com/stevearc/oil.nvim) for editing filesystem buffers like text.
 - **LSP & Formatting**: Native `vim.lsp` with auto-format on save and dynamic [Emmet](https://github.com/olrtg/emmet-language-server) attachment for HTML/JSX/CSS.
 - **LaTeX & Document Editing**: [vimtex](https://github.com/lervag/vimtex) with background continuous compilation (`latexmk`) and PDF integration.
@@ -101,6 +101,13 @@ sudo apt install -y marksman
 # or download binary from https://github.com/artempyanykh/marksman/releases
 ```
 
+#### LaTeX (VimTeX & TexLab)
+```bash
+# Compiler, Zathura PDF viewer, and TexLab LSP
+sudo apt install -y latexmk texlive-latex-base texlive-latex-extra texlive-fonts-recommended zathura zathura-pdf-poppler texlab
+```
+*(See [`Latex-WSL/`](./Latex-WSL) for full WSLg cursor setup and configuration).*
+
 ---
 
 ### 4. Font Recommendation
@@ -119,7 +126,7 @@ Install a [Nerd Font](https://www.nerdfonts.com/) (e.g., **JetBrains Mono Nerd F
    ```bash
    nvim
    ```
-   *Neovim will automatically download and install all 15 plugins on first startup via `vim.pack.add`.*
+   *Neovim will automatically download and install all 19 plugins on first startup via `vim.pack.add`.*
 
 3. **Install Core Treesitter Parsers**:
    Inside Neovim, run:
@@ -136,11 +143,12 @@ Install a [Nerd Font](https://www.nerdfonts.com/) (e.g., **JetBrains Mono Nerd F
 | :--- | :---: | :--- |
 | `<Space>` | Normal | **Leader key** |
 | `jj` | Insert | Fast escape to Normal mode |
-| `<leader>f` | Terminal | Exit terminal mode (`<C-\><C-n>`) |
+| `<leader>ff` | Terminal | Exit terminal mode (`<C-\><C-n>`) |
 | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Normal | Move focus between split windows |
-| `<leader>sn` | Normal | Open empty vertical split (`:vnew`) |
-| `<leader>vn` | Normal | Open empty horizontal split (`:new`) |
+| `<leader>vn` | Normal | Open empty vertical split (`:vnew`) |
+| `<leader>sn` | Normal | Open empty horizontal split (`:new`) |
 | `<leader>mm` | Normal | Close current buffer while preserving window split layout |
+| `zk` | Normal, Visual, Op | **Flash Jump** (Teleport cursor anywhere on screen) |
 | `-` | Normal | Open [Oil.nvim](https://github.com/stevearc/oil.nvim) parent directory file browser |
 | `<leader>o` | Oil Buffer | Toggle hidden files in Oil |
 | `<leader>p` | Oil Buffer | Refresh directory listing in Oil |
@@ -190,6 +198,7 @@ Install a [Nerd Font](https://www.nerdfonts.com/) (e.g., **JetBrains Mono Nerd F
 | [`nvim-tree/nvim-web-devicons`](https://github.com/nvim-tree/nvim-web-devicons) | File Type Icons | Nerd Font in terminal |
 | [`iamcco/markdown-preview.nvim`](https://github.com/iamcco/markdown-preview.nvim) | Browser Markdown Preview | Node.js + `cd app && ./install.sh` + `wslu` (`wslview`) |
 | [`goolord/alpha-nvim`](https://github.com/goolord/alpha-nvim) | Fast Startup Dashboard | Pure Lua (configured in `lua/alpha-config.lua`) |
+| [`folke/flash.nvim`](https://github.com/folke/flash.nvim) | 2D Motion & Treesitter Navigation | Pure Lua (no external dependencies) |
 | [`sphamba/smear-cursor.nvim`](https://github.com/sphamba/smear-cursor.nvim) | Animated Trailing Cursor | Terminal supporting RGB / TrueColor |
 | [`lervag/vimtex`](https://github.com/lervag/vimtex) | LaTeX Editing & Compilation | `latexmk`, `texlive`, PDF viewer (`zathura`) |
 

@@ -14,7 +14,7 @@ vim.opt.spell = true
 vim.opt.spelllang = { 'en_us' }
 
 -- Exit terminal
-vim.keymap.set('t', '<leader>f', [[<C-\><C-n>]], { desc = 'Exit terminal mode with space + f', nowait = true })
+vim.keymap.set('t', '<leader>ff', [[<C-\><C-n>]], { desc = 'Exit terminal mode with space + f', nowait = true })
 vim.api.nvim_create_autocmd('TermOpen', {
     group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
     callback = function()
@@ -63,8 +63,8 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper windows' })
 
 -- Pestañas vacias vertical y horizontal
-vim.keymap.set('n', '<leader>sn', '<cmd>vnew<cr>', { desc = 'Split vertical vacío' })
-vim.keymap.set('n', '<leader>vn', '<cmd>new<cr>', { desc = 'Split horizontal vacío' })
+vim.keymap.set('n', '<leader>vn', '<cmd>vnew<cr>', { desc = 'Split vertical vacío' })
+vim.keymap.set('n', '<leader>sn', '<cmd>new<cr>', { desc = 'Split horizontal vacío' })
 
 -- Cerrar buffer sin cerrar la ventana
 vim.keymap.set('n', '<leader>mm', function()
@@ -102,6 +102,7 @@ vim.pack.add({
     'https://github.com/lervag/vimtex',
     'https://github.com/sphamba/smear-cursor.nvim',
     'https://github.com/goolord/alpha-nvim',
+    'https://github.com/folke/flash.nvim',
 })
 
 
@@ -306,3 +307,8 @@ require('smear_cursor').setup({})
 
 -- Alpha Dashboard (configured in lua/alpha-config.lua)
 require('alpha-config')
+
+-- Flash.nvim (Navigation & Search)
+require('flash').setup({})
+
+vim.keymap.set({ "n", "x", "o" }, "zk", function() require("flash").jump() end, { desc = "Flash Jump" })
